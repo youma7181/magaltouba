@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pelerin;
+use Illuminate\Support\Facades\Response;
 
 class PelerinController extends Controller
 {
     // Lister tous les pèlerins
     public function index()
     {
-        return response()->json(Pelerin::all());
+        return Response::json(Pelerin::all());
     }
 
     // Créer un nouveau pèlerin
@@ -25,7 +26,7 @@ class PelerinController extends Controller
         ]);
 
         $pelerin = Pelerin::create($request->all());
-        return response()->json($pelerin, 201);
+        return Response::json($pelerin, 201);
     }
 
     // Afficher un pèlerin par son id
@@ -33,9 +34,9 @@ class PelerinController extends Controller
     {
         $pelerin = Pelerin::find($id);
         if (!$pelerin) {
-            return response()->json(['message' => 'Pèlerin non trouvé'], 404);
+            return Response::json(['message' => 'Pèlerin non trouvé'], 404);
         }
-        return response()->json($pelerin);
+        return Response::json($pelerin);
     }
 
     // Modifier un pèlerin
@@ -59,6 +60,6 @@ class PelerinController extends Controller
         }
 
         $pelerin->delete();
-        return response()->json(['message' => 'Pèlerin supprimé']);
+        return Response::json(['message' => 'Pèlerin supprimé']);
     }
 }

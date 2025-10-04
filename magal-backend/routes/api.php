@@ -3,13 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\PelerinController;
-use App\Http\Controllers\Api\HoraireController;
-use App\Http\Controllers\Api\NotificationController;
-use App\Http\Controllers\Api\PointInteretController;
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
 
-// Routes API pour chaque entité
+use App\Http\Controllers\Api\PelerinController;
 Route::apiResource('pelerins', PelerinController::class);
-Route::apiResource('horaires', HoraireController::class);
-Route::apiResource('notifications', NotificationController::class);
-Route::apiResource('pointinterets', PointInteretController::class);

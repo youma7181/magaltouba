@@ -12,4 +12,5 @@ class Pelerin extends Model
     protected $fillable = [
         'nom', 'prenom', 'email', 'telephone'
     ];
+    
 }
